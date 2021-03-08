@@ -12,7 +12,7 @@
 ## Features
 * *Two input fields('item name', 'quantity')*
 * *Four buttons('insert', 'create table', 'delete table', 'fetch record')*
-* *Data output in table format *
+* *Data output in table format*
 * *Delete button for every record*
 * *Warnings and notifications on every action*
 
