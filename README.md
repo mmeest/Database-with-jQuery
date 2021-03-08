@@ -1,7 +1,11 @@
 <p align="center"><img src="db.png" width="300px"></p>
 
-# Database-with-jQuery
-Create Read and Delete data in database with jQuery
+<h1 align="center">
+    <strong>Database with jQuery</strong>
+</h1>
+<h3 align="center">
+    Create Read and Delete data in database with jQuery
+</h3>
 
 ## Features
 * Two input fields('item name', 'quantity')
