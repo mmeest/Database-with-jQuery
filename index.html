@@ -67,12 +67,28 @@
         db.transaction(function(transaction){
             var sql="DROP TABLE items";
             transaction.executeSql(sql,undefined,function(){
+                loadData();
                 alert("Table is deleted successfully")
             },function(transaction,err){
                 alert(err.message)
             })
         });
     });
+
+    // delete record
+    function deleteRecord(id){
+        if(!confirm("Are you sure to delete this record?","")) return;;
+        db.transaction(function(transaction){
+            console.log(id);
+            var sql="DELETE FROM items WHERE id="+id;
+            transaction.executeSql(sql,undefined,function(){
+                loadData();
+                alert("Record is deleted successfully")
+            },function(transaction,err){
+                alert(err.message)
+            })
+        });
+    }
 
     // on insert
     $("#insert").click(function(){
@@ -81,6 +97,7 @@
         db.transaction(function(transaction){
             var sql="INSERT INTO items(item, quantity) VALUES(?,?)";
             transaction.executeSql(sql,[item, qty], function(){
+                loadData();
                 alert("New item is added successfully");
             },function(){
                 alert("Item failed to be added. You need to creat table first.");
@@ -99,13 +116,13 @@
             var sql="SELECT * FROM items ORDER BY id DESC";
             transaction.executeSql(sql,undefined,function(transaction,result){
                 if(result.rows.length){
-                    $("#itemlist").append('<tr><th>ID</th><th>Item name</th><th>Quantity</th></tr>');
+                    $("#itemlist").append('<tr><th>ID</th><th>Item name</th><th>Quantity</th><th>Delete</th></tr>');
                     for(var i=0;i<result.rows.length;i++){
                         var row=result.rows.item(i);
                         var item=row.item;
                         var id=row.id;
                         var quantity=row.quantity;
-                        $("#itemlist").append('<tr><td>'+id+'</td><td>'+item+'</td><td>'+quantity+'</td></tr>');
+                        $("#itemlist").append('<tr><td>'+id+'</td><td>'+item+'</td><td>'+quantity+'</td><td><button type="button" class="btn btn-primary" onclick="deleteRecord('+id+')">Delete record</button></td></tr>');
                     }
                 }else{
                     $("#itemlist").append('<tr><td colspan="3">No Item Found</td></tr>')
