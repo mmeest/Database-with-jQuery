@@ -1,4 +1,4 @@
-<p align="center"><img src="db.png" width="300px"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/34022590/110830880-5a865d00-82a2-11eb-936a-156a584e25fd.png" width="300px"></p>
 
 <h1 align="center">
     <strong>Database with jQuery</strong>
